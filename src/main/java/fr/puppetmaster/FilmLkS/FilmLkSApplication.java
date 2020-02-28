@@ -42,12 +42,15 @@ public class FilmLkSApplication implements CommandLineRunner {
         movieRepository.findAll().forEach(movie -> {
             //System.out.println(movie.toString());
             System.out.println(movie.getTitle());
+            System.out.println(movie.getDirector());
+            //System.out.println(movie.getActors());
+            
         });
 
-        //Movie filmGattaca = movieRepository.findByTitle("Gattaca");
+        Movie filmGattaca = movieRepository.findByTitle("Gattaca");
         //System.out.println(filmGattaca);
         
-        //Actor actorBrad = actorRepository.findByName("Harrison Ford");
+        Actor actorBrad = actorRepository.findByName("Harrison Ford");
         //System.out.println(actorBrad);
     }
 }

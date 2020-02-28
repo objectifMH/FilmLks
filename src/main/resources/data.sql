@@ -42,6 +42,14 @@ INSERT INTO actor (id, name) VALUES (4, 'Sean Connery');
 INSERT INTO actor (id, name) VALUES (5, 'Ethan Hawke');
 INSERT INTO actor (id, name) VALUES (6, 'Uma Thurman');
 INSERT INTO actor (id, name) VALUES (7, 'Jude Law');
+INSERT INTO actor (id, name) VALUES (8, 'Michael Law');
+INSERT INTO actor (id, name) VALUES (9, 'Michael Jackson');
+INSERT INTO actor (id, name) VALUES (10, 'Michael Jordan');
+INSERT INTO actor (id, name) VALUES (11, 'Michael B. Jordan');
+INSERT INTO actor (id, name) VALUES (12, 'Jordan Lewis');
+
+
+
 
 
 INSERT INTO movie (id, title, date, director_id) VALUES (10,'Star Wars 1 - La menace fantôme', '1999-01-01', 1);

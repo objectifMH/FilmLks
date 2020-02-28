@@ -27,5 +27,5 @@ public class Actor {
     private String name;
     
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "actors", cascade=CascadeType.ALL)
-    private List<Movie> movies ;
+    private List<Movie> movies = new ArrayList();
 }
