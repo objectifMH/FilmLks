@@ -25,6 +25,6 @@ public class Actor {
 
     private String name;
     
-    //@ManyToMany(mappedBy = "actors", cascade=CascadeType.ALL)
-    //private List<Movie> movies ;
+    @ManyToMany(mappedBy = "actors", cascade=CascadeType.ALL)
+    private List<Movie> movies ;
 }

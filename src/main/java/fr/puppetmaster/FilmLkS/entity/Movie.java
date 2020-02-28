@@ -35,15 +35,15 @@ public class Movie {
     @Temporal(TemporalType.DATE) @Column(nullable = false ) 
     private Date date;
     
-    //@ManyToOne 
+    @ManyToOne 
     //@Column(name = "id_director", nullable = false)
-    //private Director director;
+    private Director director;
     
     
-    //@ManyToMany(cascade=CascadeType.ALL)
-    //@JoinTable(name="testactor_movie", 
-    //      joinColumns = {@JoinColumn(referencedColumnName="movie_id")} ,
-    //        inverseJoinColumns = {@JoinColumn(referencedColumnName="actor_id")}) 
-    //private List<Actor> actors; 
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name="actor_movie", 
+          joinColumns = @JoinColumn(name = "movie_id") ,
+            inverseJoinColumns = @JoinColumn(name = "actor_id")) 
+    private List<Actor> actors; 
 
 }

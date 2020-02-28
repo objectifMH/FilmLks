@@ -34,7 +34,7 @@ public class FilmLkSApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         //Affiche l'id 
-        restConfiguration.exposeIdsFor(Actor.class, Director.class, Movie.class);
+        //restConfiguration.exposeIdsFor(Actor.class, Director.class, Movie.class);
         
         
         System.out.println("Le serveur est lancé ! ");
