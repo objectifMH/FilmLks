@@ -8,6 +8,7 @@ package fr.puppetmaster.FilmLkS.service;
 import fr.puppetmaster.FilmLkS.entity.Movie;
 import fr.puppetmaster.FilmLkS.repository.MovieRepository;
 import java.util.List;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

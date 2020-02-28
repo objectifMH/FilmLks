@@ -11,6 +11,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.sql.DataSource;
+import javax.transaction.Transactional;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 
 @SpringBootApplication
@@ -31,16 +32,17 @@ public class FilmLkSApplication implements CommandLineRunner {
         SpringApplication.run(FilmLkSApplication.class, args);
     }
 
-    @Override
+    @Override @Transactional
     public void run(String... args) throws Exception {
         //Affiche l'id 
-        //restConfiguration.exposeIdsFor(Actor.class, Director.class, Movie.class);
+        restConfiguration.exposeIdsFor(Actor.class, Director.class, Movie.class);
         
         
         System.out.println("Le serveur est lancé ! ");
-        //movieRepository.findAll().forEach(movie -> {
-        //    System.out.println(movie.toString());
-        //});
+        movieRepository.findAll().forEach(movie -> {
+            //System.out.println(movie.toString());
+            System.out.println(movie.getTitle());
+        });
 
         //Movie filmGattaca = movieRepository.findByTitle("Gattaca");
         //System.out.println(filmGattaca);
