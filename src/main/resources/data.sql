@@ -60,7 +60,7 @@ INSERT INTO movie (id, title, date, director_id) VALUES (20,'Indiana Jones - Les
 INSERT INTO movie (id, title, date, director_id) VALUES (21,'Indiana Jones - Le temple maudit', '1984-05-23', 2);
 INSERT INTO movie (id, title, date, director_id) VALUES (22,'Indiana Jones - La dernière croisade', '1989-05-24', 2);
 INSERT INTO movie (id, title, date, director_id) VALUES (23,'Indiana Jones - Le royaume du crâne de cristal', '2008-05-21', 2);
-INSERT INTO movie (id, title, date, director_id) VALUES (24,'Gattaca', '1998-04-29', 3);
+INSERT INTO movie (id, title, date, director_id) VALUES (24,'Gattaca', '1999-01-01', 3);
 
 
 INSERT INTO actor_movie (actor_id, movie_id) VALUES (1,13);
@@ -74,3 +74,6 @@ INSERT INTO actor_movie (actor_id, movie_id) VALUES (4,22);
 INSERT INTO actor_movie (actor_id, movie_id) VALUES (5,24);
 INSERT INTO actor_movie (actor_id, movie_id) VALUES (6,24);
 INSERT INTO actor_movie (actor_id, movie_id) VALUES (7,24);
+
+INSERT INTO actor_movie (actor_id, movie_id) VALUES (1,10);
+INSERT INTO actor_movie (actor_id, movie_id) VALUES (5,10);

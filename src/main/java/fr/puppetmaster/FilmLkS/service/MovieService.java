@@ -39,6 +39,7 @@ public class MovieService {
 
     //On cherche un Film par son id :
     public Movie getMovieById(int id) {
+        System.out.println(movieRepository.findById(id).orElse(null));
         return movieRepository.findById(id).orElse(null);
     }
 

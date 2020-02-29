@@ -1,6 +1,8 @@
 package fr.puppetmaster.FilmLkS.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -21,30 +23,34 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import lombok.ToString;
 
 @Entity
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class Movie {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false ) 
+    @Column(nullable = false)
     private String title;
-    
-    
-    @Temporal(TemporalType.DATE) @Column(nullable = false ) 
+
+    @Temporal(TemporalType.DATE)
+    @Column(nullable = false)
     private Date date;
-    
-    @ManyToOne 
+
+    @ManyToOne
     //@Column(name = "id_director", nullable = false)
     private Director director;
-    
-    
-    @ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name="actor_movie", 
-          joinColumns = @JoinColumn(name = "movie_id") ,
-            inverseJoinColumns = @JoinColumn(name = "actor_id")) 
-    private List<Actor> actors = new ArrayList(); 
+
+    //
+    //@ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "movies" )
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private List<Actor> actors = new ArrayList();
 
 }

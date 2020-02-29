@@ -16,7 +16,8 @@ public interface ActorRepository extends JpaRepository<Actor, Integer> {
     @RestResource(path = "/byName")
     public List<Actor> findByNameContains(@Param("na") String name);
     
-    //Ex :   
+    //Tabulation 
+    //Ex :   /actors/search/byNamePage?na=Jordan&page=0&size=2
     @RestResource(path = "/byNamePage")
     public Page<Actor> findByNameContains(@Param("na") String name, Pageable pageable);
 }
