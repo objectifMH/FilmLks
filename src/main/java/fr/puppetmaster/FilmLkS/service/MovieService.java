@@ -62,17 +62,18 @@ public class MovieService {
         return movieRepository.save(movieMaj);
     }
 
+    //a finir : 
     //On trie en fonction des champs :  
     public List<Movie> getMovieSortByTitle(String field) {
         return movieRepository.findAll();
     }
     
-    //On cherche par mot clé :
+    //On cherche par mot clé  (sensible à la casse):
     public List<Movie> getMovieByMc(String mc) {
         return movieRepository.findByTitleContains(mc);
     }
     
-    //On cherche par mot directeur :
+    //On liste les films d'un directeur :
     public List<Movie> getMovieByDirector(Director director) {
        return movieRepository.findByDirector(director.getId());
     }

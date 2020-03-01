@@ -32,6 +32,7 @@ CREATE TABLE actor_movie(
 INSERT INTO director (id, name) VALUES (1, 'Georges Lucas');
 INSERT INTO director (id, name) VALUES (2, 'Steven Spielberg');
 INSERT INTO director (id, name) VALUES (3, 'Andrew Niccol');
+INSERT INTO director (id, name) VALUES (4, 'Nolan');
 
 
 
@@ -61,6 +62,7 @@ INSERT INTO movie (id, title, date, director_id) VALUES (21,'Indiana Jones - Le 
 INSERT INTO movie (id, title, date, director_id) VALUES (22,'Indiana Jones - La dernière croisade', '1989-05-24', 2);
 INSERT INTO movie (id, title, date, director_id) VALUES (23,'Indiana Jones - Le royaume du crâne de cristal', '2008-05-21', 2);
 INSERT INTO movie (id, title, date, director_id) VALUES (24,'Gattaca', '1999-01-01', 3);
+INSERT INTO movie (id, title, date, director_id) VALUES (25,'Interstellar', '1999-01-01', 4);
 
 
 INSERT INTO actor_movie (actor_id, movie_id) VALUES (1,13);

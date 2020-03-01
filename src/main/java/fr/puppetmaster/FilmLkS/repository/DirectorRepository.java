@@ -10,5 +10,8 @@ public interface DirectorRepository extends JpaRepository<Director, Integer> {
     //Je recherche une liste de directeur ayant le  mot clé name : 
     @RestResource(path = "/byName")
     public List<Director> findByNameContains(@Param("nd") String name);
+    
+    @RestResource(path = "/byNameIc")
+    public List<Director> findByNameContainsIgnoreCase(@Param("nd") String name);
 
 }

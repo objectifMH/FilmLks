@@ -62,6 +62,7 @@ public class MovieController {
     public List<Movie> findAllMoviesTitleByMc(@PathVariable String mc) {
         return movieService.getMovieByMc(mc);
     }
+    
 
     
     //@GetMapping("/findFilm/{field}")

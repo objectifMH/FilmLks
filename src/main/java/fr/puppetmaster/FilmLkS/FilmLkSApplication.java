@@ -4,7 +4,11 @@ import fr.puppetmaster.FilmLkS.entity.Actor;
 import fr.puppetmaster.FilmLkS.entity.Director;
 import fr.puppetmaster.FilmLkS.entity.Movie;
 import fr.puppetmaster.FilmLkS.repository.ActorRepository;
+import fr.puppetmaster.FilmLkS.repository.DirectorRepository;
 import fr.puppetmaster.FilmLkS.repository.MovieRepository;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,6 +26,9 @@ public class FilmLkSApplication implements CommandLineRunner {
     
     @Autowired
     private ActorRepository actorRepository;
+    
+    @Autowired
+    private DirectorRepository directorRepository;
 
     @Autowired
     private RepositoryRestConfiguration restConfiguration;
@@ -53,5 +60,12 @@ public class FilmLkSApplication implements CommandLineRunner {
         
         Actor actorBrad = actorRepository.findByName("Harrison Ford");
         //System.out.println(actorBrad);
+        
+        //on ajoute un film : 
+        Director dir = directorRepository.findById(1).get();
+        List<Actor> actorsMov = new ArrayList();
+        
+        Movie mov = new Movie(null, "Le tombeaux des lucioles", new Date() , dir, actorsMov);
+        movieRepository.save(mov);
     }
 }
