@@ -45,6 +45,7 @@ public class FilmLkSApplication implements CommandLineRunner {
             System.out.println(movie.getDirector());
             //System.out.println(movie.getActors());
             
+            
         });
 
         Movie filmGattaca = movieRepository.findByTitle("Gattaca");

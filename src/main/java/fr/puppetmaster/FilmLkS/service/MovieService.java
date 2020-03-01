@@ -5,11 +5,13 @@
  */
 package fr.puppetmaster.FilmLkS.service;
 
+import fr.puppetmaster.FilmLkS.entity.Director;
 import fr.puppetmaster.FilmLkS.entity.Movie;
 import fr.puppetmaster.FilmLkS.repository.MovieRepository;
 import java.util.List;
-import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+
 import org.springframework.stereotype.Service;
 
 /**
@@ -60,7 +62,19 @@ public class MovieService {
         return movieRepository.save(movieMaj);
     }
 
-    public Movie getMovieByName(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    //On trie en fonction des champs :  
+    public List<Movie> getMovieSortByTitle(String field) {
+        return movieRepository.findAll();
     }
+    
+    //On cherche par mot clé :
+    public List<Movie> getMovieByMc(String mc) {
+        return movieRepository.findByTitleContains(mc);
+    }
+    
+    //On cherche par mot directeur :
+    public List<Movie> getMovieByDirector(Director director) {
+       return movieRepository.findByDirector(director.getId());
+    }
+
 }

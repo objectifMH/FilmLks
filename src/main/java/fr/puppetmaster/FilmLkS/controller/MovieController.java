@@ -14,13 +14,9 @@ import fr.puppetmaster.FilmLkS.service.MovieService;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -40,6 +36,8 @@ public class MovieController {
     @Autowired
     private DirectorRepository directorRepository;
 
+    //***************  films  ***************
+    
     @GetMapping("films")
     public List<Movie> findAllMovies() {
         System.out.println("Dans controller films");
@@ -59,19 +57,51 @@ public class MovieController {
     public Movie findMovieByName(@PathVariable String title) {
         return movieService.getMovieByTitle(title);
     }
+    
+    @GetMapping("films/{mc}")
+    public List<Movie> findAllMoviesTitleByMc(@PathVariable String mc) {
+        return movieService.getMovieByMc(mc);
+    }
 
-    @GetMapping("actor/{id}")
+    
+    //@GetMapping("/findFilm/{field}")
+    //public List<Movie> findMovieByField(@PathVariable String field) {
+    //    return "a faire";
+    //}
+    
+    
+
+    //***************  acteurs  ***************
+    
+    @GetMapping("acteur/{id}")
     public Actor findActorById(@PathVariable int id) {
         Actor actor = actorRepository.findById(id).get();
         
         return actor;
     }
     
-    @GetMapping("director/{id}")
-    public Director findDirectorById(@PathVariable int id) {
-        Director director = directorRepository.findById(id).get();
-        return director;
+    @GetMapping("acteurs")
+    public List<Actor> findAllActors() {
+        return actorRepository.findAll();
     }
+    
+    //@GetMapping("/findActeurs/{field}")
+    public List<Actor> findActorByField(@PathVariable String field) {
+        return actorRepository.findAll();//new Sort(Sort.Direction.ASC, "field"));
+    }
+    
+    
+    //***************  directeur  ***************
+    
+    @GetMapping("directeur/{id}")
+    public List<Movie> findDirectorById(@PathVariable int id) {
+        Director director = directorRepository.findById(id).get();
+        List<Movie> movies = movieService.getMovieByDirector(director);
+        
+        return movies;
+    }
+    
+    
 
     /*
     @PostMapping("film")

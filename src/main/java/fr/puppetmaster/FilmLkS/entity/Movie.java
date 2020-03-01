@@ -44,12 +44,12 @@ public class Movie {
     private Date date;
 
     @ManyToOne
-    //@Column(name = "id_director", nullable = false)
     private Director director;
 
-    //
-    //@ManyToMany(fetch = FetchType.LAZY)
-    @ManyToMany(mappedBy = "movies" )
+    @ManyToMany
+    @JoinTable(name = "actor_movie",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "actor_id"))
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Actor> actors = new ArrayList();
 
