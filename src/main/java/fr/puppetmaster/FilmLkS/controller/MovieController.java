@@ -12,6 +12,7 @@ import fr.puppetmaster.FilmLkS.repository.ActorRepository;
 import fr.puppetmaster.FilmLkS.repository.DirectorRepository;
 import fr.puppetmaster.FilmLkS.service.MovieService;
 import java.util.List;
+import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -86,6 +87,14 @@ public class MovieController {
         return actorRepository.findAll();
     }
     
+    
+    //recherche les acteurs avec un nom contenant un mot clé (ignore la casse) : 
+    @GetMapping("acteurs/{nomActeur}")
+    public List<Actor> findAllActorsByName(@PathVariable String nomActeur) {
+        return actorRepository.findAll().stream().filter(movie -> movie.getName().toLowerCase().contains(nomActeur.toLowerCase())).collect(Collectors.toList());
+    }
+    
+    // a finir 
     //@GetMapping("/findActeurs/{field}")
     public List<Actor> findActorByField(@PathVariable String field) {
         return actorRepository.findAll();//new Sort(Sort.Direction.ASC, "field"));
