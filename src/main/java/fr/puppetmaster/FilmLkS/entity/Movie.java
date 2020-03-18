@@ -37,7 +37,7 @@ public class Movie {
     @JoinTable(name = "actor_movie",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "actor_id"))
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private List<Actor> actors = new ArrayList();
 
 }
