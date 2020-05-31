@@ -65,7 +65,9 @@ public class FilmLkSApplication implements CommandLineRunner {
         Director dir = directorRepository.findById(1).get();
         List<Actor> actorsMov = new ArrayList();
         
-        Movie mov = new Movie(null, "Le tombeaux des lucioles", new Date() , dir, actorsMov);
+        
+        Movie mov;
+        mov = new Movie(null, "Le tombeau des lucioles", 2.99d , new Date() , dir, actorsMov);
         movieRepository.save(mov);
     }
 }

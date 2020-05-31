@@ -25,6 +25,8 @@ public class Movie {
 
     @Column(nullable = false)
     private String title;
+    
+    private Double prix;
 
     @Temporal(TemporalType.DATE)
     @Column(nullable = false)
