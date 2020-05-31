@@ -21,6 +21,8 @@ public class Actor {
 
     private String name;
 
-    @ManyToMany(mappedBy = "actors")
-    private Collection<Movie> movies = new ArrayList();
+    // Avec cette solution pas besoin de projections ni de //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY) dans la table Movie
+
+    //@ManyToMany(mappedBy = "actors")
+    //private Collection<Movie> movies = new ArrayList();
 }
