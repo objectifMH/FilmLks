@@ -38,5 +38,15 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
     
     //@Query(value = "SELECT * FROM MOVIE m WHERE upper(m.title) like upper((concat('%', ?1,'%')) ", nativeQuery = true)
     //public List<Movie> findByDirectorNoCase(String nameD);
-
+    
+    //Ex 
+    // Creation d'un film : 
+    // POST http://localhost:8088/movies/
+    //{
+    //	"title" : "Parasite",
+    //  "prix" : 1.99,
+    //  "date" : "1999-01-01",
+    //  "director" : "/directors/5"
+    //  }   
+    //
 }
