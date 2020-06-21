@@ -86,7 +86,7 @@ public class MovieController {
         return actor;
     }
     
-    @GetMapping("acteurWithFims/{id}")
+    @GetMapping("acteurWithFilms/{id}")
     public List<Movie> findActeursWithFilms(@PathVariable int id) {
 
         List<Movie> movies = new ArrayList();
