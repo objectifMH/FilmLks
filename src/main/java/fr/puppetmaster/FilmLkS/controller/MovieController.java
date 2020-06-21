@@ -86,10 +86,27 @@ public class MovieController {
         return actor;
     }
     
-    @GetMapping("acteurs")
-    public List<Actor> findAllActors() {
-        return actorRepository.findAll();
+    @GetMapping("acteurWithFims/{id}")
+    public List<Movie> findActeursWithFilms(@PathVariable int id) {
+
+        List<Movie> movies = new ArrayList();
+        Actor actor = actorRepository.findById(id).get();
+        movies.addAll(movieService.getMovieByActor(actor));
+        return movies;
     }
+    
+    
+    @GetMapping("acteurs")
+    public List<Movie> findActeurs() {
+
+        List<Movie> movies = new ArrayList();
+        for (Actor actor : actorRepository.findAll()) {
+            movies.addAll(movieService.getMovieByActor(actor));
+        }
+
+        return movies;
+    }
+        
     
     
     //recherche les acteurs avec un nom contenant un mot clé (ignore la casse) : 

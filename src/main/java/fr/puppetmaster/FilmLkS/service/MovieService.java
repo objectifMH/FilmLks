@@ -5,6 +5,7 @@
  */
 package fr.puppetmaster.FilmLkS.service;
 
+import fr.puppetmaster.FilmLkS.entity.Actor;
 import fr.puppetmaster.FilmLkS.entity.Director;
 import fr.puppetmaster.FilmLkS.entity.Movie;
 import fr.puppetmaster.FilmLkS.repository.MovieRepository;
@@ -76,6 +77,11 @@ public class MovieService {
     //On liste les films d'un directeur :
     public List<Movie> getMovieByDirector(Director director) {
        return movieRepository.findByDirector(director.getId());
+    }
+    
+    //On liste les films d'un acteur :
+    public List<Movie> getMovieByActor(Actor actor) {
+       return movieRepository.findByActor(actor.getId());
     }
 
 }
