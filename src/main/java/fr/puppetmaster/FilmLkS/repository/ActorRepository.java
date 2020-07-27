@@ -12,9 +12,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 @CrossOrigin("*")
 public interface ActorRepository extends JpaRepository<Actor, Integer> {
-    public Actor findByName(String name);
     
-    //Je recherche une liste d'acteurs ayant le  mot clé name : 
+    public Actor findByName(String name);
+     
+    @RestResource(path = "/byNameIc")
+    public List<Actor> findByNameContainsIgnoreCase(@Param("na") String name);
+    
+    //Recherche une liste d'acteurs ayant le mot clé name : 
     //Ex :    /actors/search/byName?na=Jordan
     @RestResource(path = "/byName")
     public List<Actor> findByNameContains(@Param("na") String name);
@@ -24,7 +28,6 @@ public interface ActorRepository extends JpaRepository<Actor, Integer> {
     @RestResource(path = "/byNamePage")
     public Page<Actor> findByNameContains(@Param("na") String name, Pageable pageable);
     
-    @RestResource(path = "/byNameIc")
-    public List<Actor> findByNameContainsIgnoreCase(@Param("na") String name);
+    
 
 }

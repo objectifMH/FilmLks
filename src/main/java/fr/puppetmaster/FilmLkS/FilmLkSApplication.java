@@ -10,6 +10,7 @@ import fr.puppetmaster.FilmLkS.repository.MovieRepository;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.function.Consumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -32,6 +33,8 @@ public class FilmLkSApplication implements CommandLineRunner {
 
     @Autowired
     private RepositoryRestConfiguration restConfiguration;
+    
+    public int max = 1; 
     
     
 
@@ -69,5 +72,29 @@ public class FilmLkSApplication implements CommandLineRunner {
         Movie mov;
         mov = new Movie(null, "Le tombeau des lucioles", 2.99d , new Date() , dir, actorsMov);
         movieRepository.save(mov);
+        
+        
+        //On recupère le  plus grand id typé int : 
+        
+        directorRepository.findAll().forEach((Director director) ->  {
+            max = max > director.getId() ? max : director.getId();
+                
+                System.out.println(director.getId());
+            }
+        );
+        //Un nouveau Director : 
+        int newID =  max + 1; 
+        Director newDirector = new Director( newID, "M. Night Shyamalan");
+        directorRepository.save(newDirector);
+        
+        
+        
+        Actor actorBruceWillis = new Actor(null, "Bruce Willis");
+        
+        List<Actor> actorsIncassable = new ArrayList();
+        actorsIncassable.add(actorRepository.findByName("Bruce Willis"));
+        mov = new Movie(null, "Incassable", 3.99d , new Date() , newDirector, actorsIncassable);
+        movieRepository.save(mov);
+        
     }
 }
