@@ -90,6 +90,7 @@ public class FilmLkSApplication implements CommandLineRunner {
         
         
         Actor actorBruceWillis = new Actor(null, "Bruce Willis");
+        actorRepository.save(actorBruceWillis);
         
         List<Actor> actorsIncassable = new ArrayList();
         actorsIncassable.add(actorRepository.findByName("Bruce Willis"));
